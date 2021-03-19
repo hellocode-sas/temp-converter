@@ -54,4 +54,29 @@ public class RemoteAdapter {
                 .value(value)
                 .build();
     }
+
+    public static ConverterRequest toRequest(String _from, String _to, String _value) {
+
+
+        String  strvalue = Optional.ofNullable(_value).orElseThrow(() ->
+                new ConverterException(ErrorEnum.VALUE_NOT_FOUND));
+
+        Double value = Double.parseDouble(strvalue);
+
+        TemperatureUnitEnum from = TemperatureUnitEnum.valueOf(Optional.ofNullable(_from)
+                .orElseThrow(() ->
+                        new ConverterException(ErrorEnum.FROM_UNIT_NOT_FOUND))
+                .toUpperCase());
+
+        TemperatureUnitEnum target = TemperatureUnitEnum.valueOf(Optional.ofNullable(_to)
+                .orElseThrow(() ->
+                        new ConverterException(ErrorEnum.TARGET_UNIT_NOT_FOUND))
+                .toUpperCase());
+
+        return ConverterRequest.builder()
+                .sourceUnit(from)
+                .targetUnit(target)
+                .value(value)
+                .build();
+    }
 }

@@ -45,7 +45,7 @@ class ConverterControllerTest {
 
         MvcResult mvcResult = mvc.perform(get("/convert?from=K&to=C&value=32-D4"))
                 .andDo(print())
-                .andExpect(jsonPath("$.errorCode").value("INVALID_REQUEST"))
+                .andExpect(jsonPath("$.errorCode").value("ERROR"))
                 .andReturn();
 
         String json = mvcResult.getResponse().getContentAsString();
@@ -59,7 +59,7 @@ class ConverterControllerTest {
 
         MvcResult mvcResult = mvc.perform(get("/convert?from=L&to=M&value=324"))
                 .andDo(print())
-                .andExpect(jsonPath("$.errorCode").value("INVALID_REQUEST"))
+                .andExpect(jsonPath("$.errorCode").value("ERROR"))
                 .andReturn();
 
         String json = mvcResult.getResponse().getContentAsString();
@@ -69,18 +69,7 @@ class ConverterControllerTest {
 
 
 
-    @Test
-    public void case04$executingInvalidOperation() throws Exception {
 
-        MvcResult mvcResult = mvc.perform(get("/convert"))
-                .andDo(print())
-                .andExpect(jsonPath("$.errorCode").value("VALUE_NOT_FOUND"))
-                .andReturn();
-
-        String json = mvcResult.getResponse().getContentAsString();
-        System.out.println("JSON" + json);
-
-    }
 
 
 }
