@@ -1,29 +1,20 @@
-# README #
+# HelloCode Temp-Conversor #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Servicio conversor para unidades de temperatura.
 
-### What is this repository for? ###
+### Que contiene este repositorio? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Encuentras el código fuente de un servicio capaz de transformar
+entre diversas unidades de temperatura. 
 
-### How do I get set up? ###
+### Como lo ejecuto? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Construir: `./gradlew build`
+* Ejecutar : `java -jar build/libs/temp-converter.jar`
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+### Contacto ###
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* HelloCode SAS
+* https://hellocode.com.co
+* info@hellocode.com.co
