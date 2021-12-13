@@ -11,7 +11,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-	jar.archiveName = 'temp-converter.jar'
+	jar.archiveFileName = 'temp-converter.jar'
 }
 
 repositories {
@@ -20,11 +20,16 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.22'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
 	testImplementation ('org.springframework.boot:spring-boot-starter-test')
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
-	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 
 }
@@ -32,3 +37,13 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+//adding more detail to tests logs
+tasks.withType(Test) {
+	testLogging {
+		exceptionFormat "full"
+		events "started", "skipped", "passed", "failed"
+		showStandardStreams true
+	}
+}
+
